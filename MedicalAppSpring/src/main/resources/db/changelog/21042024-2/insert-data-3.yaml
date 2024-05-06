@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data-1.yaml
+      author: Lik
+      changes:
+        # Node
+        - loadData:
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: db/changelog/21042024-2/data/node.csv
+            quotchar: '"'
+            separator: ','
+            tableName: node

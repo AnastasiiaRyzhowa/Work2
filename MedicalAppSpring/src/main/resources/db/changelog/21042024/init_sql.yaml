@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: init_database
+      author: Lik
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(255)
+              - column:
+                  name: date_of_birth
+                  type: date
+              - column:
+                  name: full_name
+                  type: varchar(122)
+        - createTable:
+            tableName: electrocardiography
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: appointment_date_time
+                  type: timestamp(6)
+              - column:
+                  name: data
+                  type: varchar(2147483647)
+              - column:
+                  name: person_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: person_id
+                    references: person(id)
+        - createTable:
+            tableName: node
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: label
+                  type: varchar(255)
+              - column:
+                  name: axios_x
+                  type: double precision
+              - column:
+                  name: axios_y
+                  type: double precision
+              - column:
+                  name: electrocardiography_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: electrocardiography_id
+                    references: electrocardiography(id)

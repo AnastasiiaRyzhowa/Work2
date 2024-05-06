@@ -1,0 +1,13 @@
+databaseChangeLog:
+
+  - include:
+      file: db/changelog/21042024/init_sql.yaml
+
+  - include:
+      file: db/changelog/21042024-2/insert-data-1.yaml
+
+  - include:
+      file: db/changelog/21042024-2/insert-data-2.yaml
+
+  - include:
+      file: db/changelog/21042024-2/insert-data-3.yaml

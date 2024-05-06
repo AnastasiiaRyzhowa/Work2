@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: #221F2E;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medical.app.medicalappfx.controllers.DiagramController">
+   <children>
+      <Pane prefHeight="650.0" prefWidth="225.0" style="-fx-background-color: #2E2B3F;">
+         <children>
+            <Text fill="WHITE" layoutX="63.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Меню">
+               <font>
+                  <Font name="Roboto" size="39.0" />
+               </font>
+            </Text>
+            <ListView fx:id="annotationArea" layoutX="18.0" layoutY="84.0" prefHeight="331.0" prefWidth="200.0" />
+            <Button fx:id="resultAnnotationButton" layoutX="17.0" layoutY="422.0" mnemonicParsing="false" onAction="#resultAnnotationAction" prefHeight="25.0" prefWidth="200.0" text="Произвести расчет" />
+            <Button fx:id="closeDiagramButton" layoutX="17.0" layoutY="611.0" mnemonicParsing="false" onAction="#closeDiagramAction" prefHeight="25.0" prefWidth="200.0" text="Закрыть диаграмму" />
+            <Button fx:id="saveDiagramButton" layoutX="18.0" layoutY="578.0" mnemonicParsing="false" onAction="#saveDiagramAction" prefHeight="25.0" prefWidth="200.0" text="Сохранить диаграмму" />
+            <Button fx:id="showSaveAnnotation" layoutX="17.0" layoutY="471.0" mnemonicParsing="false" onAction="#showSaveAnnotationAction" prefHeight="25.0" prefWidth="200.0" text="Отобразить сохраненные метки" />
+            <Button fx:id="deleteAllAnnotation" layoutX="17.0" layoutY="502.0" mnemonicParsing="false" onAction="#deleteAllAnnotationAction" prefHeight="25.0" prefWidth="200.0" text="Удалить все метки" />
+         </children>
+      </Pane>
+      <Text fill="#fcfcfc" layoutX="360.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО:">
+         <font>
+            <Font name="Roboto" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfcfc" layoutX="269.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата рождения:">
+         <font>
+            <Font name="Roboto" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfcfc" layoutX="860.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата прохождения обследования:" wrappingWidth="167.125">
+         <font>
+            <Font name="Roboto" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="scrollNullButton" layoutX="590.0" layoutY="588.0" mnemonicParsing="false" onAction="#scrollNullButtonAction" prefHeight="48.0" prefWidth="167.0" text="Начальное положение" />
+      <Button fx:id="scrollEndButton" layoutX="767.0" layoutY="588.0" mnemonicParsing="false" onAction="#scrollEndButtonAction" prefHeight="48.0" prefWidth="74.0" text="--&gt;&gt;" />
+      <Button fx:id="scrollStartButton" layoutX="507.0" layoutY="588.0" mnemonicParsing="false" onAction="#scrollStartButtonAction" prefHeight="48.0" prefWidth="74.0" text="&lt;&lt;--" />
+      <Pane layoutX="410.0" layoutY="38.0" prefHeight="23.0" prefWidth="264.0" style="-fx-background-color: white;">
+         <children>
+            <Text fx:id="nameText" layoutX="8.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Иванов Иван Иванович">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="65.0" prefHeight="23.0" prefWidth="264.0" style="-fx-background-color: white;">
+         <children>
+            <Text fx:id="birthText" layoutX="9.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="14.08.1996">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="993.0" layoutY="72.0" prefHeight="23.0" prefWidth="189.0" style="-fx-background-color: white;">
+         <children>
+            <Text fx:id="dateText" layoutX="12.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20.04.2024 14:06">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="paneForChart" layoutX="229.0" layoutY="96.0" prefHeight="477.0" prefWidth="971.0">
+         <children>
+            <LineChart fx:id="lineChart" onMouseClicked="#clickMouse" onScroll="#scrollEventChart" prefHeight="477.0" prefWidth="971.0" style="-fx-background-color: white;">
+              <xAxis>
+                 <NumberAxis label="время, мл. сек">
+                     <tickLabelFont>
+                        <Font size="11.0" />
+                     </tickLabelFont></NumberAxis>
+                <CategoryAxis side="BOTTOM" fx:id="xAxios" />
+              </xAxis>
+              <yAxis>
+                 <NumberAxis label="Амплитуда, мкВ" />
+                <NumberAxis fx:id="yAxios" side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </Pane>
+      <Button fx:id="helpButton" layoutX="238.0" layoutY="612.0" mnemonicParsing="false" onAction="#helpButtonAction" prefHeight="25.0" prefWidth="110.0" text="Помощь" />
+   </children>
+</Pane>
